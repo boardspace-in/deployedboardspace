@@ -5,11 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start" : "cd ./server/ && npm install && node server.js",
-    "postbuild" : "cd ./client/ && npm i && npm run build",
-    "frontend" : "cd ./client/ && npm start",
-    "backend" : "cd ./server/ && nodemon server.js"
+    "start": "cd ./server/ && npm install && node server.js",
+    "postbuild": "npm install --prefix client && npm run build -- prefix client ",
+    "frontend": "cd ./client/ && npm start",
+    "backend": "cd ./server/ && nodemon server.js",
+    "temp" : "concurrently \"npm run frontend\" \"npm run backend\" "
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.0"
+  }
 }
