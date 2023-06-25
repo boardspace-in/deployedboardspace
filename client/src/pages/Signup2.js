@@ -27,8 +27,8 @@ const Signup2 = () => {
 	const mastd = useRef(null);
 	const phdd = useRef(null);
 
-	let url = ""
-	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100")
+	let url = "";
+	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100");
 
 	// Logout from navbar.js
 	const handleLogout = () => {
@@ -95,7 +95,6 @@ const Signup2 = () => {
 		let file1 = event.target.files[0];
 		const type = file1.type;
 		const splittedt = type.split("/");
-		console.log(splittedt);
 		let xyz = "image";
 		if (splittedt[0] === xyz) {
 			neetd.current = file1;
@@ -117,7 +116,7 @@ const Signup2 = () => {
 		let file1 = event.target.files[0];
 		const type = file1.type;
 		const splittedt = type.split("/");
-		console.log(splittedt);
+
 		let xyz = "image";
 		if (splittedt[0] === xyz) {
 			boardd.current = file1;
@@ -139,7 +138,7 @@ const Signup2 = () => {
 		let file1 = event.target.files[0];
 		const type = file1.type;
 		const splittedt = type.split("/");
-		console.log(splittedt);
+
 		let xyz = "image";
 		if (splittedt[0] === xyz) {
 			jeed.current = file1;
@@ -161,7 +160,7 @@ const Signup2 = () => {
 		let file1 = event.target.files[0];
 		const type = file1.type;
 		const splittedt = type.split("/");
-		console.log(splittedt);
+
 		let xyz = "image";
 		if (splittedt[0] === xyz) {
 			mastd.current = file1;
@@ -183,7 +182,7 @@ const Signup2 = () => {
 		let file1 = event.target.files[0];
 		const type = file1.type;
 		const splittedt = type.split("/");
-		console.log(splittedt);
+
 		let xyz = "image";
 		if (splittedt[0] === xyz) {
 			phdd.current = file1;
@@ -445,7 +444,7 @@ const Signup2 = () => {
 									<input type="checkbox" defaultChecked={false} value={"Neet Topper"} onChange={onChange2} name="Neet Topper" className={styles.boxstyle} disabled={isNeetTopper.disable} />
 
 									<p className={styles.Category}>NEET Topper</p>
-									
+
 									{isNeetTopper.enabled && !isNeetTopper.disable && (
 										<div className={styles.fileinput}>
 											<label htmlFor="neettop">

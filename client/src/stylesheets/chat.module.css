@@ -81,7 +81,6 @@
 	padding: 0 0 0 0;
 	font-family: "Poppins", sans-serif;
 	font-weight: bold;
-	padding-bottom: 18%;
 }
 
 .notifications1 {
@@ -114,7 +113,7 @@
 	display: block;
 	background-color: transparent;
 	cursor: pointer;
-	margin-bottom: 1rem;
+	margin-bottom: 13%;
 }
 
 .chatMessages {
@@ -280,6 +279,8 @@
 	outline: none;
 	flex-grow: 0.75;
 	margin-top: 2.5rem;
+	padding-left: 1.5%;
+	padding-right: 1.5%;
 }
 
 .chatInput::placeholder {

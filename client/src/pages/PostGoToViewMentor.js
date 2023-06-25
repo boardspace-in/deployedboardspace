@@ -24,8 +24,8 @@ const PostGoToViewMentor = () => {
 	const [gohash, setgohash] = useState("");
 	const [fetchedComments, setFetchedComments] = useState(false);
 
-	let url = ""
-	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100")
+	let url = "";
+	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100");
 
 	const commentsRef = useRef(null);
 
@@ -58,7 +58,7 @@ const PostGoToViewMentor = () => {
 		getpost();
 	}, []);
 
-	const getcomments = async() => {
+	const getcomments = async () => {
 		const response = await fetch(url + `/api/comment/getall/${postdet.pid}`, {
 			method: "GET",
 			headers: {
@@ -75,15 +75,14 @@ const PostGoToViewMentor = () => {
 		if (json.success) {
 			setcomments(json.data);
 		}
-	}
+	};
 
 	useEffect(() => {
-		
 		if (postdet.pid && !fetchedComments) {
 			getcomments();
 			setFetchedComments(true);
 		}
-	
+
 		setArr(comments);
 	});
 
@@ -104,10 +103,10 @@ const PostGoToViewMentor = () => {
 				seterror(null);
 			}, 4000);
 		}
-	
+
 		if (json.success) {
 			setnewcomm("");
-			await getcomments()
+			await getcomments();
 		}
 	};
 
@@ -180,7 +179,7 @@ const PostGoToViewMentor = () => {
 						<form className={styles.gotohash}>
 							<input type="number" placeholder="Go to hashtag" onChange={hello} className={styles2.sidform}></input>
 							<button className={styles2.formbutton}>
-								<img src={searchicon} className={styles2.srchimg} onClick={srch} />
+								<img src={searchicon} className={styles2.srchimg} onClick={srch} alt="Search Icon" />
 							</button>
 						</form>
 					</div>

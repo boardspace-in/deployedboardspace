@@ -25,6 +25,7 @@
 	color: #291755;
 	padding: 0.01rem;
 	padding-left: 1rem;
+	word-break: break-word;
 }
 
 .verifybutton {

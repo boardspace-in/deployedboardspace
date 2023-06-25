@@ -25,8 +25,8 @@ const PostGoToViewStudent = () => {
 	const [searchError, setSearchError] = useState(null);
 	const [gohash, setgohash] = useState("");
 
-	let url = ""
-	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100")
+	let url = "";
+	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100");
 
 	useEffect(() => {
 		async function getpost() {
@@ -59,7 +59,7 @@ const PostGoToViewStudent = () => {
 		commentsRef.current.scrollTo(0, commentsRef.current.scrollHeight);
 	}, [arr]);
 
-	const getcomments = async() => {
+	const getcomments = async () => {
 		const response = await fetch(url + `/api/comment/getall/${postdet.pid}`, {
 			method: "GET",
 			headers: {
@@ -76,15 +76,14 @@ const PostGoToViewStudent = () => {
 		if (json.success) {
 			setcomments(json.data);
 		}
-	}
+	};
 
 	useEffect(() => {
-		
 		if (postdet.pid && !fetchedComments) {
 			getcomments();
 			setFetchedComments(true);
 		}
-	
+
 		setArr(comments);
 	});
 
@@ -109,7 +108,7 @@ const PostGoToViewStudent = () => {
 	};
 
 	const handleSubmit = async (e) => {
-		e.preventDefault()
+		e.preventDefault();
 
 		const response = await fetch(url + `/api/comment/create/student/${postdet.pid}`, {
 			method: "POST",
@@ -128,9 +127,8 @@ const PostGoToViewStudent = () => {
 
 		if (json.success) {
 			setnewcomm("");
-			await getcomments()
+			await getcomments();
 		}
-
 	};
 
 	const handleinput = (e) => {
@@ -209,7 +207,7 @@ const PostGoToViewStudent = () => {
 					<form className={styles.gotohash}>
 						<input type="number" placeholder="Go to hashtag" onChange={hello} className={styles2.sidform}></input>
 						<button className={styles2.formbutton}>
-							<img src={searchicon} className={styles2.srchimg} onClick={srch} />
+							<img src={searchicon} className={styles2.srchimg} onClick={srch} alt="Search Icon" />
 						</button>
 					</form>
 					{searchError && (
@@ -225,7 +223,7 @@ const PostGoToViewStudent = () => {
 				)}
 			</div>
 
-			<div className={styles.right}>
+			<div className={styles2.right}>
 				<h3 className={styles2.roomname}>#{findhashtag}</h3>
 				<div className={styles2.dispimg}>
 					<p className={styles2.txt}>Description :</p>
@@ -273,11 +271,8 @@ const PostGoToViewStudent = () => {
 											{comment.commentedbyme && <div className={styles2.inner2}></div>}
 											{!comment.commentedbyme && comment.commentedby && (
 												<div className={styles2.inner}>
-													<p>
-														{" "}
-														<b>{comment.commentedby.name}</b>
-													</p>
-													<p>{comment.commentedby.toparea.join(", ")}</p>
+													<p className={styles2.tagmain}> {comment.commentedby.name}</p>
+													<p className={styles2.tag}>{comment.commentedby.toparea.join(", ")}</p>
 												</div>
 											)}
 											<div className={styles2.commcon}>

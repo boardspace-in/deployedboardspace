@@ -3,14 +3,15 @@ import { useNavigate, Link } from "react-router-dom";
 import Card from "../components/Card";
 import styles from "../stylesheets/adminlanding.module.css";
 import dashboardlogo from "../assets/navbarlogo.png";
+import boardspacelogo from "../assets/dashboardlogo.png";
 
 const AdminLand = () => {
 	const [idArray, setIdArray] = useState([]);
 	const [allmentor, setmentor] = useState(0);
 	const [allstudent, setstudent] = useState(0);
 
-  let url = ""
-	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100")
+	let url = "";
+	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100");
 
 	const getdata = async () => {
 		const response = await fetch(url + "/api/admin/getall", {
@@ -71,83 +72,98 @@ const AdminLand = () => {
 		navigate(0);
 	};
 
-  const getstudentmessages = () => {
-    navigate("/admin-student/messages")
-    navigate(0)
-  }
+	const getstudentmessages = () => {
+		navigate("/admin-student/messages");
+		navigate(0);
+	};
 
-  const getchatrooms = () => {
-        navigate("/admin/chatrooms")
-        navigate(0)
-    }
+	const getchatrooms = () => {
+		navigate("/admin/chatrooms");
+		navigate(0);
+	};
 
-  return (
-    <>
-      <div className={styles.column + " " + styles.left}>
-        <Link to="/"><img className={styles.imgstyle} src={dashboardlogo} alt="" /></Link>
-        <div className={styles.smallcardleft}>
-          <button className={styles.leftbutton} onClick={gethome}><span className={styles.notifications}>Home</span></button>
-          <button className={styles.leftbutton} onClick={getmessages}><span className={styles.notifications}>Mentor Messages</span></button>
-          <button className={styles.leftbutton} onClick={getstudentmessages}><span className={styles.notifications}>Student Messages</span></button>
-          <button className={styles.leftbutton} onClick={getchatrooms}><span className={styles.notifications}>Chat Rooms</span></button>
-          <button className={styles.leftbutton} onClick={getrejected}><span className={styles.notifications}>Rejected</span></button>
-          <button className={styles.leftbutton} onClick={getaccept}><span className={styles.notifications}>Accepted</span></button>
-        </div>
-        {localStorage.getItem("Token") && <button className={styles.logoutbtn} onClick={handleLogout}><span className={styles.welcometext2}>Logout</span></button>}
-      </div>
-      <div className={styles.column + " " + styles.middle}>
+	return (
+		<>
+			<div className={styles.column + " " + styles.left}>
+				<Link to="/">
+					<img className={styles.imgstyle} src={dashboardlogo} alt="" />
+				</Link>
+				<div className={styles.smallcardleft}>
+					<button className={styles.leftbutton} onClick={gethome}>
+						<span className={styles.notifications}>Home</span>
+					</button>
+					<button className={styles.leftbutton} onClick={getmessages}>
+						<span className={styles.notifications}>Mentor Messages</span>
+					</button>
+					<button className={styles.leftbutton} onClick={getstudentmessages}>
+						<span className={styles.notifications}>Student Messages</span>
+					</button>
+					<button className={styles.leftbutton} onClick={getchatrooms}>
+						<span className={styles.notifications}>Chat Rooms</span>
+					</button>
+					<button className={styles.leftbutton} onClick={getrejected}>
+						<span className={styles.notifications}>Rejected</span>
+					</button>
+					<button className={styles.leftbutton} onClick={getaccept}>
+						<span className={styles.notifications}>Accepted</span>
+					</button>
+				</div>
+				{localStorage.getItem("Token") && (
+					<button className={styles.logoutbtn} onClick={handleLogout}>
+						<span className={styles.welcometext2}>Logout</span>
+					</button>
+				)}
+			</div>
+			<div className={styles.column + " " + styles.middle}>
+				<div className={styles.leftbox}>
+					<span className={styles.analytics}>Analytics</span>
+					<span className={styles.welcometext}>Welcome back, lets get back to work</span>
+				</div>
 
-        <div className={styles.leftbox}>
-          <span className={styles.analytics}>Analytics</span>
-          <span className={styles.welcometext}>Welcome back, lets get back to work</span>
-        </div>
+				<span className={styles.mentorrequests2}>Mentor Requests to be accepted : </span>
+				<div className={styles.cardcontainer}>
+					{idArray.map((id) => (
+						<Card key={id} mentid={id} />
+					))}
+				</div>
+			</div>
+			<div className={styles.column + " " + styles.right}>
+				<div className={styles.detailscontainer}>
+					<div className={styles.profilephotobox}></div>
+				</div>
+				<div className={styles.detailscontainer}>
+					<span className={styles.mentorrequests}>Admin</span>
+				</div>
 
-        <span className={styles.mentorrequests2}>Mentor Requests to be accepted : </span>
-        <div className={styles.cardcontainer}>
-          {idArray.map((id) => <Card key={id} mentid={id} />)}
-        </div>
-      </div>
-      <div className={styles.column + " " + styles.right}>
-        <div className={styles.detailscontainer}>
-          <div className={styles.profilephotobox}></div>
-        </div>
-        <div className={styles.detailscontainer}>
-          <span className={styles.mentorrequests}>Ojas Binayake</span>
-        </div>
-        <div className={styles.detailscontainer}>
-          <span className={styles.welcometext}>Admin</span>
-        </div>
-        <div className={styles.statscontainer}>
-          <div>
-            <div className={styles.detailscontainer}>
-              <div className={styles.mentorrequests}>{allstudent}</div>
-            </div>
-            <div className={styles.detailscontainer}>
-              <span className={styles.welcometext}>students</span>
-            </div>
-          </div>
-          <div>
-            <div className={styles.detailscontainer}>
-              <div className={styles.mentorrequests}>{allmentor}</div>
-            </div>
-            <div className={styles.detailscontainer}>
-              <span className={styles.welcometext}>mentors</span>
-            </div>
-          </div>
-          <div>
-            <div className={styles.detailscontainer}>
-              <div className={styles.mentorrequests}>12</div>
-            </div>
-            <div className={styles.detailscontainer}>
-              <span className={styles.welcometext}>messages</span>
-            </div>
-          </div>
-        </div>
-      </div>
+				<div className={styles.statscontainer}>
+					<div>
+						<div className={styles.detailscontainer}>
+							<div className={styles.mentorrequests}>{allstudent}</div>
+						</div>
+						<div className={styles.detailscontainer}>
+							<span className={styles.welcometext}>students</span>
+						</div>
+					</div>
+					<div>
+						<div className={styles.detailscontainer}>
+							<div className={styles.mentorrequests}>{allmentor}</div>
+						</div>
+						<div className={styles.detailscontainer}>
+							<span className={styles.welcometext}>mentors</span>
+						</div>
+					</div>
+					<div>
+						<div className={styles.detailscontainer}>
+							<div className={styles.mentorrequests}>12</div>
+						</div>
+						<div className={styles.detailscontainer}>
+							<span className={styles.welcometext}>messages</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</>
+	);
+};
 
-    </>
-  )
-}
-
-
-export default AdminLand
+export default AdminLand;

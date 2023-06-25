@@ -21,8 +21,8 @@ const PostPostStudent = () => {
 	const ufile = useRef(null);
 	const [isLoading, setIsLoading] = useState(false);
 
-	let url = ""
-	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100")
+	let url = "";
+	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100");
 
 	const hello = (e) => {
 		e.preventDefault();
@@ -58,8 +58,20 @@ const PostPostStudent = () => {
 
 	const onImageChange = (event) => {
 		ufile.current = event.target.files[0];
-		if (event.target.files && event.target.files[0]) {
-			setImage(URL.createObjectURL(event.target.files[0]));
+
+		let file1 = event.target.files[0];
+		const type = file1.type;
+		const splittedt = type.split("/");
+		let xyz = "image";
+		if (splittedt[0] === xyz) {
+			if (event.target.files && event.target.files[0]) {
+				setImage(URL.createObjectURL(event.target.files[0]));
+			}
+		} else {
+			setError("Only images allowed");
+			setTimeout(() => {
+				setError(null);
+			}, 4000);
 		}
 	};
 
@@ -179,7 +191,7 @@ const PostPostStudent = () => {
 						<form className={styles.gotohash}>
 							<input type="number" placeholder="Go to hashtag" onChange={hello} className={styles3.sidform}></input>
 							<button className={styles3.formbutton}>
-								<img src={searchicon} className={styles3.srchimg} onClick={srch} alt=""/>
+								<img src={searchicon} className={styles3.srchimg} onClick={srch} alt="" />
 							</button>
 						</form>
 					</div>
