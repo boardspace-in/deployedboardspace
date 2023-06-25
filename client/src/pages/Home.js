@@ -38,7 +38,7 @@ function Home() {
 	};
 
 	const getnums = async () => {
-		const response = await fetch("/gethomepagenums", {
+		const response = await fetch("api/gethomepagenums", {
 			method: "GET",
 			headers: { "Content-Type": "application/json" },
 		});

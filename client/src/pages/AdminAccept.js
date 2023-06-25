@@ -25,7 +25,7 @@ function AdminAccept() {
     }
 
     const getnums = async () => {
-        const response = await fetch("/getnums", {
+        const response = await fetch("/api/getnums", {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
         })

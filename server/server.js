@@ -13,7 +13,10 @@ mongoose.set('strictQuery', true)
 const app = express();
 app.use(express.urlencoded({ extended: true }))
 app.use(cors())
-app.use(express.static(path.join(__dirname , '../client/build')))
+
+if( process.env.NODE_ENV === "production"){
+  app.use(express.static(path.join(__dirname , '../client/build')))
+}
 app.use(express.json())
 app.use(bodyParser.json())
 
@@ -33,12 +36,12 @@ const Notification = require('./models/notification')
 const Post = require('./models/post')
 const Comment = require('./models/comment')
 
-app.use('/mentor/', mentorroutes)
-app.use('/student/', studentroutes)
-app.use('/admin/', adminroutes)
-app.use('/chat', chatroutes)
-app.use('/post', postroutes)
-app.use('/comment', commentroutes)
+app.use('api/mentor/', mentorroutes)
+app.use('api/student/', studentroutes)
+app.use('api/admin/', adminroutes)
+app.use('api/chat', chatroutes)
+app.use('api/post', postroutes)
+app.use('api/comment', commentroutes)
 
 const server = require('http').createServer(app)
 const MYPORT = process.env.PORT || 6100
@@ -56,11 +59,7 @@ mongoose.connect(DB_URL)
     .catch(e => console.log(e))
 
 
-app.get('/', (req, res) => {
-    res.send("Welcome to home page sir")
-})
-
-app.get('/getnums' , async (req,res) => {
+app.get('api/getnums' , async (req,res) => {
 
     try {
         
@@ -74,7 +73,7 @@ app.get('/getnums' , async (req,res) => {
     
 })
 
-app.get('/gethomepagenums', async(req, res) =>{
+app.get('api/gethomepagenums', async(req, res) =>{
   try {
         
         const jeetoppers = await Mentor.countDocuments({
@@ -94,8 +93,8 @@ app.get('/gethomepagenums', async(req, res) =>{
     }
 })
 
-app.get('/' , (req,res) => {
-  res.sendFile(path.join(__dirname , '../client/build/index.html'));
+app.get('*' , (req,res) => {
+  res.sendFile(path.resolve(__dirname , '../client' , 'build' , 'index.html'));
 })
 
 async function getMessagesFromRoom(currentRoom) {
