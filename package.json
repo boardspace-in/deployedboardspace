@@ -8,7 +8,7 @@
     "start": "node server.js",
     "server": "nodemon server.js",
     "temp": "concurrently \"npm start --prefix client\" \"npm run server\"",
-    "client" : "npm install --prefix client"
+    "client" : "npm install --prefix client && npm install --force"
   },
   "author": "",
   "license": "ISC",
