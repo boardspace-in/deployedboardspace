@@ -1,0 +1,288 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+.Home {
+	margin-top: 0;
+	font-family: "Poppins", sans-serif;
+}
+
+.parallaxsize {
+	height: 60rem;
+}
+
+.bgimg {
+	padding-right: 40%;
+}
+
+.fields::-webkit-outer-spin-button,
+.fields::-webkit-inner-spin-button {
+	-webkit-transform-style: preserve-3d;
+	-webkit-backface-visibility: hidden;
+}
+
+.power {
+	font-family: "Work Sans", sans-serif;
+	font-weight: 700;
+	width: 50rem;
+	padding-top: 9.6rem;
+	padding-left: 8.3rem;
+	/* Color of Power #17163e */
+	font-size: 5.625rem;
+	color: #16163f;
+	letter-spacing: -0.02em;
+	line-height: 1.1em;
+}
+
+.toppers {
+	padding-top: 1rem;
+	padding-left: 8.3rem;
+	font-family: "Montserrat", sans-serif;
+	font-size: 1.5rem;
+	font-weight: 400;
+	line-height: 1.6em;
+	color: #16163f;
+	letter-spacing: 0.05rem;
+}
+
+.servicessize {
+	height: 47.375rem;
+}
+
+.services {
+	height: 16.125rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+}
+
+.services h2 {
+	margin: 0;
+	font-family: "Montserrat", sans-serif;
+	font-size: 1rem;
+	font-weight: 600;
+	font-stretch: 200%;
+	letter-spacing: 0.1rem;
+	color: #9e3ffd;
+	text-align: center;
+	padding-bottom: 1.5rem;
+	animation-name: scroller;
+	animation-duration: 1s;
+}
+
+@keyframes scroller {
+	from {
+		transform: translate(0, 50%);
+	}
+	to {
+	}
+}
+
+.services h4 {
+	margin: 0;
+	color: #16163f;
+	font-family: "Work Sans", sans-serif;
+	font-size: 2.25rem;
+	font-weight: 600;
+	text-align: center;
+	letter-spacing: -0.0225rem;
+	padding-bottom: 0.5rem;
+	line-height: 3rem;
+	animation-name: scroller;
+	animation-delay: 0.2s;
+	animation-duration: 1s;
+}
+
+.servimages {
+	height: 31.25rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+
+.servimage {
+	padding-top: 9rem;
+	font-family: "Montserrat", sans-serif;
+	font-weight: 300;
+	font-size: 0.9rem;
+	animation-name: scroller;
+	animation-delay: 0.4s;
+	animation-duration: 1s;
+}
+
+.servimage h3 {
+	text-align: center;
+	font-size: 0.9rem;
+	animation-name: scroller;
+	animation-delay: 0.6s;
+	animation-duration: 1s;
+}
+.servimage p {
+	text-align: center;
+	font-size: 1rem;
+	/* margin: 0; */
+	padding: 0.05rem;
+	line-height: 1.5rem;
+	animation-name: scroller;
+	animation-delay: 0.8s;
+}
+
+.servimage img {
+	max-width: 40%;
+}
+
+.people {
+	background-color: #101c45;
+	color: white;
+	font-family: "Montserrat", sans-serif;
+	height: 54%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+.data h5 {
+	font-size: 2.2rem;
+	margin: 0;
+	padding-top: 5rem;
+	width: 100%;
+}
+.numbers {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin: 0;
+	padding-top: 3.5rem;
+}
+.rtd p {
+	margin: 0;
+	font-size: 1rem;
+	text-align: center;
+	padding-left: 3.2rem;
+	padding-right: 3.4rem;
+	padding-bottom: 2.5rem;
+}
+.rtd p h2 {
+	margin: 0;
+	font-size: 4.5rem;
+	padding-bottom: 0.8rem;
+}
+
+.lax {
+	height: 54.6rem;
+	width: 100%;
+}
+.graph {
+	display: flex;
+	flex-direction: row;
+	position: sticky;
+}
+.finest {
+	width: 50%;
+	height: 100%;
+	margin: 0;
+	background-color: white;
+	padding-bottom: 2rem;
+	margin-top: 5rem;
+}
+.finest p {
+	font-size: 1.1rem;
+	margin-left: 9rem;
+	margin-right: 8rem;
+	font-family: "Quicksand", sans-serif;
+	line-height: 1.4;
+	text-align: justify;
+	text-justify: inter-word;
+	width: 100%;
+}
+.finest p h3 {
+	color: #9e3ffd;
+	font-size: 1rem;
+	font-family: "Montserrat", sans-serif;
+	/* width: 40%; */
+}
+.finest p h1 {
+	color: #16163f;
+	font-family: "Montserrat", sans-serif;
+	font-size: 2.5rem;
+}
+
+.joincommsize {
+	width: 100%;
+	height: 28rem;
+	/* padding-top: 2rem; */
+}
+.join {
+	background-color: #101c45;
+	color: white;
+	font-family: "Montserrat", sans-serif;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	/* align-items: center; */
+	justify-content: center;
+}
+.join p h2 {
+	padding-top: 4rem;
+	padding-bottom: 0.2rem;
+	font-size: 2rem;
+	font-family: "Noto Sans", sans-serif;
+	letter-spacing: 0.1rem;
+}
+.join p {
+	font-size: 1.5rem;
+	padding-left: 1rem;
+	font-family: "Quicksand", sans-serif;
+	padding-bottom: 3rem;
+}
+
+.ent {
+	background-color: #5f5bcd;
+	color: white;
+	padding: 1.2rem 1rem 1.2rem 1rem;
+	border-radius: 1rem;
+	width: 19rem;
+	appearance: none;
+	border: none;
+	font-size: 1.5rem;
+	font-family: "Roboto", sans-serif;
+	font-weight: 500;
+	cursor: pointer;
+}
+.ent :hover {
+	background-color: #9e3ffd;
+}
+
+.final {
+	height: 25rem;
+	width: 100%;
+}
+.info {
+	margin-left: 10rem;
+}
+.info p h4 {
+	color: #9e3ffd;
+	padding-top: 4rem;
+	font-family: "Montserrat", sans-serif;
+	letter-spacing: 0.1rem;
+}
+.info p h1 {
+	font-family: "Open Sans", sans-serif;
+}
+.info a {
+	text-decoration: none;
+	color: rgb(0, 0, 0);
+}
+
+.icons {
+	padding-top: 1.5rem;
+	padding-bottom: 1.5rem;
+	font-size: 1.5rem;
+	width: 6rem;
+}
