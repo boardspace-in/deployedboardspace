@@ -39,7 +39,7 @@ import { StudentUpdatePass } from "./pages/StudentUpdatePass";
 import { MentorUpdatePass } from "./pages/MentorUpdatePass";
 import { io } from "socket.io-client";
 
-const SOCKET_URL = "/";
+const SOCKET_URL = "https://bboardsspace.onrender.com";
 const socket = io(SOCKET_URL);
 
 function App() {

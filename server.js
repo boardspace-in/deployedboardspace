@@ -48,7 +48,7 @@ const MYPORT = process.env.PORT || 6100
 
 const io = require('socket.io')(server, {
     cors: {
-      origin: '*',
+      origin: 'https://boarspace-frontend.onrender.com',
       methods: ['GET', 'POST']
     }
   })
