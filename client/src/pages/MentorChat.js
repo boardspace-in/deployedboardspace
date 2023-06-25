@@ -23,6 +23,7 @@ const MentorChat = (props) => {
 	const role = decoded.role;
 	const userId = decoded.id;
 
+	
 	const hello = (e) => {
 		e.preventDefault();
 		setgohash(e.target.value);
@@ -51,12 +52,6 @@ const MentorChat = (props) => {
 		} catch (error) {
 			console.log(error);
 		}
-	};
-
-	const handleLogout = () => {
-		localStorage.removeItem("Token");
-		navigate("/");
-		navigate(0);
 	};
 
 	const viewdoubt = () => {
@@ -131,7 +126,7 @@ const MentorChat = (props) => {
 		}
 
 		getdetails();
-	}, []);
+	}, [role, userId]);
 
 	return (
 		<>
@@ -152,7 +147,7 @@ const MentorChat = (props) => {
 						<form className={styles.gotohash}>
 							<input type="number" placeholder="Go to hashtag" onChange={hello} className={styles2.sidform}></input>
 							<button className={styles2.formbutton}>
-								<img src={searchicon} className={styles2.srchimg} onClick={srch} />
+								<img src={searchicon} className={styles2.srchimg} onClick={srch} alt="" />
 							</button>
 						</form>
 					</div>
@@ -267,7 +262,7 @@ const MentorChat = (props) => {
 					<form onSubmit={handleSubmit} className={styles.chatForm}>
 						<input type="text" name="message" value={currentMessage} onChange={handleChange1} placeholder="Type your message here" className={styles.chatInput} />
 						<button type="submit" className={styles.chatButton}>
-							<img src={sendicon} />
+							<img src={sendicon} alt="" />
 						</button>
 					</form>
 				)}
