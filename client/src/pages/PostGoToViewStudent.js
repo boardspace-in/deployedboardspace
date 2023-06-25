@@ -88,9 +88,7 @@ const PostGoToViewStudent = () => {
 	});
 
 	const toggleButton = async (e) => {
-		var checkbox = document.getElementById("toggle");
 		setChecked(!checked);
-		//kd loader daal idr
 		const response = await fetch(url + `/api/post/changsolv/${findhashtag}`, {
 			method: "GET",
 			headers: {
@@ -103,8 +101,6 @@ const PostGoToViewStudent = () => {
 		if (json.error) {
 			seterror(json.error);
 		}
-
-		//idr if(json.success){loader band}
 	};
 
 	const handleSubmit = async (e) => {

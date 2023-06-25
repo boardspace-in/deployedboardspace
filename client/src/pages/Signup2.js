@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import Navbar from "../components/Navbar";
 import uploadicon from "../assets/upload.png";
 import subicon from "../assets/submitdoc.png";
 import navbarlogo from "../assets/navbarlogo.png";
@@ -30,7 +29,6 @@ const Signup2 = () => {
 	let url = "";
 	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100");
 
-	// Logout from navbar.js
 	const handleLogout = () => {
 		localStorage.removeItem("Token");
 		navigate("/");
@@ -199,7 +197,6 @@ const Signup2 = () => {
 	const handleSubmit2 = async (e) => {
 		e.preventDefault();
 
-		// show loading sign
 		setIsLoading(true);
 
 		if (isBoardTopper.enabled) {

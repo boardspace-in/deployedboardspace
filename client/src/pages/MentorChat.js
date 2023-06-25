@@ -122,7 +122,6 @@ const MentorChat = (props) => {
 			});
 
 			const json = await response.json();
-			console.log(json);
 			setCurrentUserName(json.name);
 			setFields(json.fields);
 		}

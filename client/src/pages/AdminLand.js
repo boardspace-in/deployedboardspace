@@ -3,7 +3,6 @@ import { useNavigate, Link } from "react-router-dom";
 import Card from "../components/Card";
 import styles from "../stylesheets/adminlanding.module.css";
 import dashboardlogo from "../assets/navbarlogo.png";
-import boardspacelogo from "../assets/dashboardlogo.png";
 
 const AdminLand = () => {
 	const [idArray, setIdArray] = useState([]);

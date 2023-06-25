@@ -100,7 +100,6 @@ const AdminMentorChat = (props) => {
     const updatedNotifs = await Promise.all(json.notif.map(async (singlenotif) => ({ id: singlenotif._id , count: singlenotif.count, mname:await getname2(singlenotif._id) })))
     updatedNotifs.sort((a, b) => b.count - a.count);
     setnotifs(updatedNotifs);
-    console.log(notifs)
   }
 
   useEffect(() => {
@@ -114,8 +113,7 @@ const AdminMentorChat = (props) => {
 
     socket.on("receive-room", (message, fromrole, date, time, senderName, toparea, id) => {
       setMessages(prevMessages => [...prevMessages, { content: message, fromrole: fromrole, time: time, date: date, from : senderName, toparea, fromid: id }]);
-      console.log(time, date)
-
+ 
     })
 
     return () => {
@@ -158,7 +156,6 @@ const AdminMentorChat = (props) => {
   }
 
   const handleNotifButtonClick = (id) => {
-    console.log(id)
     navigate(`/mentor/chat/${id}`)
     navigate(0)
   }

@@ -27,7 +27,6 @@ const AdminChatRooms = (props) => {
     setCurrentMessage(event.target.value)
   }
   const handleButtonClick = async (roomName) => {
-    console.log(roomName)
     if (!currentRoom) {
       socket.emit("join-one", roomName, fromrole)
     }

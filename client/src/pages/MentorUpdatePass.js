@@ -34,8 +34,6 @@ export const MentorUpdatePass = () => {
         }
         else {
             var decoded = jwt_decode(localStorage.getItem("UpdateToken"));
-            console.log(decoded.email)
-            console.log(pass1)
             const response = await fetch(url + "/api/mentor/changepass", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },

@@ -35,8 +35,6 @@ export const StudentUpdatePass = () => {
         }
         else {
             var decoded = jwt_decode(localStorage.getItem("UpdateToken"));
-            console.log(decoded.email)
-            console.log(pass1)
             const response = await fetch(url + "/api/student/changepass", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
