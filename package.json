@@ -1,19 +1,34 @@
 {
-  "name": "deployedboardspace",
+  "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd ./server/ && npm install && node server.js",
-    "postbuild": "npm install --prefix client && npm run build -- prefix client ",
-    "frontend": "cd ./client/ && npm start",
-    "backend": "cd ./server/ && node server.js",
-    "temp" : "concurrently \"npm run frontend\" \"npm run backend\" "
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "temp": "concurrently \"npm start --prefix client\" \"npm run server\""
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "concurrently": "^8.2.0"
+    "@aws-sdk/client-s3": "^3.321.1",
+    "@aws-sdk/s3-request-presigner": "^3.321.1",
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "concurrently": "^8.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.10.0",
+    "mongoose-auto-increment-updated": "^7.0.3",
+    "multer": "^1.4.5-lts.1",
+    "node-mailjet": "^6.0.2",
+    "nodemon": "^2.0.22",
+    "otp-generators": "^1.0.3",
+    "socket.io": "^4.6.1",
+    "validator": "^13.9.0"
   }
 }

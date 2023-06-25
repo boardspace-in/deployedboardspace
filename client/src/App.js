@@ -39,7 +39,7 @@ import { StudentUpdatePass } from "./pages/StudentUpdatePass";
 import { MentorUpdatePass } from "./pages/MentorUpdatePass";
 import { io } from "socket.io-client";
 
-const SOCKET_URL = "http://localhost:6100";
+const SOCKET_URL = "/";
 const socket = io(SOCKET_URL);
 
 function App() {
