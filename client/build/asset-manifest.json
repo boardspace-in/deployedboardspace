@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0113e0cc.css",
+    "main.js": "/static/js/main.be673f92.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/static/js/787.c4e7f8f9.chunk.js",
+    "static/media/bg.png": "/static/media/bg.ef3dbf79835ccffc6c32.png",
+    "static/media/graph.png": "/static/media/graph.81c743fbaae89ebb3fc2.png",
+    "static/media/Rucha.JPG": "/static/media/Rucha.e0af6f0b64e20d86b171.JPG",
+    "static/media/Siddhant.jpg": "/static/media/Siddhant.8f9516e4558f6b50db0b.jpg",
+    "static/media/Ojas.png": "/static/media/Ojas.7ea8a59df237423f65e0.png",
+    "static/media/Shourya.png": "/static/media/Shourya.500d33cb776ca9fab589.png",
+    "static/media/Aditya.jpg": "/static/media/Aditya.e2e83fb3254f71e2edcd.jpg",
+    "static/media/Kedar.jpeg": "/static/media/Kedar.e41030d379f9a64ad042.jpeg",
+    "static/media/navbarlogo.png": "/static/media/navbarlogo.cb7befd23fdc968e97b8.png",
+    "static/media/Footer.png": "/static/media/Footer.a49a759bc4e6d6723a49.png",
+    "static/media/CommunityDriven.png": "/static/media/CommunityDriven.c1b03a19a578713e6b27.png",
+    "index.html": "/index.html",
+    "main.0113e0cc.css.map": "/static/css/main.0113e0cc.css.map",
+    "main.be673f92.js.map": "/static/js/main.be673f92.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0113e0cc.css",
+    "static/js/main.be673f92.js"
+  ]
+}
