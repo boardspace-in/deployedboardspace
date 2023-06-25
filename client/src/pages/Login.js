@@ -8,6 +8,9 @@ const Login = () => {
 	const [error, setError] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
 
+	let url = ""
+	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100")
+
 	let navigate = useNavigate();
 
 	const forgotp = (e) => {
@@ -21,7 +24,7 @@ const Login = () => {
 		// show loading sign
 		setIsLoading(true);
 
-		const response = await fetch("/api/mentor/login", {
+		const response = await fetch(url + "/api/mentor/login", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({ email: credentials.email, password: credentials.password }),

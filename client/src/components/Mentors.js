@@ -14,10 +14,13 @@ const Mentors = ({mentid, notifications}) => {
   const [creadentials, setCredentials] = useState({ email: "", mname: "",topper:[]})
   const [imags, setImgarr] = useState([])
 
+  let url = ""
+	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100")
+
   useEffect(() => {
     const getdata = async() =>{
 
-      const response = await fetch(`http://localhost:6100/api/admin/mentor/dets/${mentid}`, {
+      const response = await fetch(url + `/api/admin/mentor/dets/${mentid}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       })

@@ -27,6 +27,9 @@ const Signup2 = () => {
 	const mastd = useRef(null);
 	const phdd = useRef(null);
 
+	let url = ""
+	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100")
+
 	// Logout from navbar.js
 	const handleLogout = () => {
 		localStorage.removeItem("Token");
@@ -41,7 +44,7 @@ const Signup2 = () => {
 		let data = new FormData();
 		data.append("image", exe);
 		data.append("field", field);
-		const response = await fetch(`/api/mentor/addurl/${details.email}`, {
+		const response = await fetch(url + `/api/mentor/addurl/${details.email}`, {
 			method: "POST",
 			body: data,
 		});
@@ -234,7 +237,7 @@ const Signup2 = () => {
 		const check = checkkarobt();
 
 		if (check) {
-			const response = await fetch("/api/mentor/signup", {
+			const response = await fetch(url + "/api/mentor/signup", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({ email: details.email, password: details.password, topper: topper }),

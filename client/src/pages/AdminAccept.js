@@ -10,9 +10,12 @@ function AdminAccept() {
     const [allmetor, setmenor] = useState(0)
     const [allsdent, setstent] = useState(0)
 
+    let url = ""
+	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100")
+
     const getdata = async () => {
 
-        const response = await fetch("/api/admin/get/accepted", {
+        const response = await fetch(url + "/api/admin/get/accepted", {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
         })
@@ -25,7 +28,7 @@ function AdminAccept() {
     }
 
     const getnums = async () => {
-        const response = await fetch("/api/getnums", {
+        const response = await fetch(url + "/api/getnums", {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
         })

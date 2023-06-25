@@ -16,6 +16,9 @@ const MentorForgotPass = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [isLoading2, setIsLoading2] = useState(false);
 
+    let url = ""
+	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100")
+
     let navigate = useNavigate();
 
     const handleSubmit1 = async (e) => {
@@ -24,7 +27,7 @@ const MentorForgotPass = () => {
         // show loading sign
         setIsLoading(true);
 
-        const response = await fetch("/api/mentor/forgotp", {
+        const response = await fetch(url + "/api/mentor/forgotp", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email: credentials }),
@@ -69,7 +72,7 @@ const MentorForgotPass = () => {
 
         if (decoded.otp === enotp) {
 
-            const response = await fetch("/api/mentor/enterproc", {
+            const response = await fetch(url + "/api/mentor/enterproc", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email: credentials}),

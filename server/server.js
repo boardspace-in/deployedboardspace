@@ -36,12 +36,12 @@ const Notification = require('./models/notification')
 const Post = require('./models/post')
 const Comment = require('./models/comment')
 
-app.use('api/mentor/', mentorroutes)
-app.use('api/student/', studentroutes)
-app.use('api/admin/', adminroutes)
-app.use('api/chat', chatroutes)
-app.use('api/post', postroutes)
-app.use('api/comment', commentroutes)
+app.use('/api/mentor/', mentorroutes)
+app.use('/api/student/', studentroutes)
+app.use('/api/admin/', adminroutes)
+app.use('/api/chat', chatroutes)
+app.use('/api/post', postroutes)
+app.use('/api/comment', commentroutes)
 
 const server = require('http').createServer(app)
 const MYPORT = process.env.PORT || 6100
@@ -59,7 +59,7 @@ mongoose.connect(DB_URL)
     .catch(e => console.log(e))
 
 
-app.get('api/getnums' , async (req,res) => {
+app.get('/api/getnums' , async (req,res) => {
 
     try {
         
@@ -73,7 +73,7 @@ app.get('api/getnums' , async (req,res) => {
     
 })
 
-app.get('api/gethomepagenums', async(req, res) =>{
+app.get('/api/gethomepagenums', async(req, res) =>{
   try {
         
         const jeetoppers = await Mentor.countDocuments({

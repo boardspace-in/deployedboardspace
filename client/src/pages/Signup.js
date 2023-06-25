@@ -10,6 +10,9 @@ const Signup = () => {
 	const [showOtpDiv, setShowOtpDiv] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 
+	let url = ""
+	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100")
+
 	let navigate = useNavigate();
 
 	// Logout from navbar.js
@@ -24,7 +27,7 @@ const Signup = () => {
 		// show loading sign
 		setIsLoading(true);
 
-		const response = await fetch("/api/mentor/semisignup", {
+		const response = await fetch(url + "/api/mentor/semisignup", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({ email: credentials.email, name: credentials.name }),
@@ -73,7 +76,7 @@ const Signup = () => {
 		// show loading sign
 		setIsLoading(true);
 
-		const response = await fetch("/api/mentor/verifyotp", {
+		const response = await fetch(url + "/api/mentor/verifyotp", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({ email: credentials.email, otp: credentials.otp }),

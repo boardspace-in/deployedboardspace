@@ -21,6 +21,9 @@ const PostPostStudent = () => {
 	const ufile = useRef(null);
 	const [isLoading, setIsLoading] = useState(false);
 
+	let url = ""
+	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100")
+
 	const hello = (e) => {
 		e.preventDefault();
 		setgohash(e.target.value);
@@ -29,7 +32,7 @@ const PostPostStudent = () => {
 	const srch = async (e) => {
 		e.preventDefault();
 		try {
-			const response = await fetch(`/api/post/isValid/${gohash}`, {
+			const response = await fetch(url + `/api/post/isValid/${gohash}`, {
 				method: "GET",
 				headers: {
 					"Content-Type": "application/json",
@@ -113,7 +116,7 @@ const PostPostStudent = () => {
 		data.append("tag", selectedOption);
 		data.append("sid", fid);
 
-		const response = await fetch(`/api/post/create`, {
+		const response = await fetch(url + `/api/post/create`, {
 			method: "POST",
 			body: data,
 		});

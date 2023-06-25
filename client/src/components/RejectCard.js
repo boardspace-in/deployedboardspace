@@ -23,10 +23,13 @@ const RejectCard = ({ mentid }) => {
 
   let navigate = useNavigate()
 
+  let url = ""
+	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100")
+
   useEffect(() => {
     const getdata = async () => {
 
-      const response = await fetch(`http://localhost:6100/api/admin/mentor/dets/${mentid}`, {
+      const response = await fetch(url + `/api/admin/mentor/dets/${mentid}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       })
@@ -50,7 +53,7 @@ const RejectCard = ({ mentid }) => {
 
   const getundo = async () => {
 
-    const response = await fetch(`http://localhost:6100/api/admin/mentor/undo/${mentid}`, {
+    const response = await fetch(url + `/api/admin/mentor/undo/${mentid}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
       })
@@ -69,7 +72,7 @@ const RejectCard = ({ mentid }) => {
 
   const getdelete = async () => {
 
-      const response = await fetch(`http://localhost:6100/api/admin/confirm/delete/${mentid}`, {
+      const response = await fetch(url + `/api/admin/confirm/delete/${mentid}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
       })

@@ -16,6 +16,9 @@ export const MentorUpdatePass = () => {
     const [showpass, setshowpass] = useState(true);
     let navigate = useNavigate();
 
+    let url = ""
+	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100")
+
     const handleSubmit1 = async (e) => {
         e.preventDefault();
 
@@ -33,7 +36,7 @@ export const MentorUpdatePass = () => {
             var decoded = jwt_decode(localStorage.getItem("UpdateToken"));
             console.log(decoded.email)
             console.log(pass1)
-            const response = await fetch("/api/mentor/changepass", {
+            const response = await fetch(url + "/api/mentor/changepass", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ pass: pass1, email: decoded.email }),

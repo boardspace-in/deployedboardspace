@@ -11,9 +11,12 @@ const AdminMessages = () => {
   const [allstudent, setstudent] = useState(0)
   const [notifsArray, setNotifsArray] = useState([])
 
+  let url = ""
+	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100")
+
   const getdata = async () => {
 
-    const response = await fetch("/api/admin/get/acceptednotifications", {
+    const response = await fetch(url + "/api/admin/get/acceptednotifications", {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     })
@@ -28,7 +31,7 @@ const AdminMessages = () => {
   }
 
   const getnums = async () => {
-    const response = await fetch("/api/getnums", {
+    const response = await fetch(url + "/api/getnums", {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     })

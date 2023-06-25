@@ -9,8 +9,11 @@ const AdminLand = () => {
 	const [allmentor, setmentor] = useState(0);
 	const [allstudent, setstudent] = useState(0);
 
+  let url = ""
+	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100")
+
 	const getdata = async () => {
-		const response = await fetch("/api/admin/getall", {
+		const response = await fetch(url + "/api/admin/getall", {
 			method: "GET",
 			headers: { "Content-Type": "application/json" },
 		});
@@ -23,7 +26,7 @@ const AdminLand = () => {
 	};
 
 	const getnums = async () => {
-		const response = await fetch("/api/getnums", {
+		const response = await fetch(url + "/api/getnums", {
 			method: "GET",
 			headers: { "Content-Type": "application/json" },
 		});

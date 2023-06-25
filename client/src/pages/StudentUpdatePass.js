@@ -15,6 +15,9 @@ export const StudentUpdatePass = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [showpass, setshowpass] = useState(true);
 
+    let url = ""
+	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100")
+
     let navigate = useNavigate();
 
     const handleSubmit1 = async (e) => {
@@ -34,7 +37,7 @@ export const StudentUpdatePass = () => {
             var decoded = jwt_decode(localStorage.getItem("UpdateToken"));
             console.log(decoded.email)
             console.log(pass1)
-            const response = await fetch("/api/student/changepass", {
+            const response = await fetch(url + "/api/student/changepass", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ pass: pass1, email: decoded.email }),

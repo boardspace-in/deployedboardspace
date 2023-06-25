@@ -24,6 +24,9 @@ const AdminStudentChat = (props) => {
 
   const [notifs, setnotifs] = useState([{id : "", count : "", mname:""}])
   
+  let url = ""
+	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100")
+
   var decoded = jwt_decode(localStorage.getItem("Token"))
   
   const userId = decoded.id
@@ -44,7 +47,7 @@ const AdminStudentChat = (props) => {
 
   async function getname() {
 
-    const response = await fetch(`/api/student/dets/${id}`, {
+    const response = await fetch(url + `/api/student/dets/${id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
@@ -67,7 +70,7 @@ const AdminStudentChat = (props) => {
 
   async function getname2(givenid){
 
-    const response = await fetch(`/api/student/dets/${givenid}`, {
+    const response = await fetch(url + `/api/student/dets/${givenid}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
@@ -81,7 +84,7 @@ const AdminStudentChat = (props) => {
 
   async function getstudnotf() {
 
-    const response = await fetch("/api/chat/student/notif", {
+    const response = await fetch(url + "/api/chat/student/notif", {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'

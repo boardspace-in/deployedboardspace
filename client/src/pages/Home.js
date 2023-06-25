@@ -21,6 +21,9 @@ function Home() {
 	const [communitymembers, setcommunitymembers] = useState(0);
 	const [neettoppers, setneettoppers] = useState(0);
 
+	let url = ""
+	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100")
+
 	let navigate = useNavigate();
 
 	const handleLogout = () => {
@@ -38,7 +41,7 @@ function Home() {
 	};
 
 	const getnums = async () => {
-		const response = await fetch("api/gethomepagenums", {
+		const response = await fetch(url + "/api/gethomepagenums", {
 			method: "GET",
 			headers: { "Content-Type": "application/json" },
 		});

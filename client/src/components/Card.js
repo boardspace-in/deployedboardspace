@@ -23,9 +23,12 @@ const Card = ({ mentid }) => {
 		setIsOpen(false);
 	};
 
+	let url = ""
+	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100")
+
 	useEffect(() => {
 		const getdata = async () => {
-			const response = await fetch(`http://localhost:6100/api/admin/mentor/dets/${mentid}`, {
+			const response = await fetch( url + `/api/admin/mentor/dets/${mentid}`, {
 				method: "GET",
 				headers: { "Content-Type": "application/json" },
 			});
@@ -42,7 +45,7 @@ const Card = ({ mentid }) => {
 		};
 
 		const getimages = async () => {
-			const response = await fetch(`http://localhost:6100/api/mentor/images/${mentid}`, {
+			const response = await fetch( url + `/api/mentor/images/${mentid}`, {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 			});
@@ -57,7 +60,7 @@ const Card = ({ mentid }) => {
 	let navigate = useNavigate();
 
 	const getverify = async () => {
-		const response = await fetch(`http://localhost:6100/api/admin/verify/mentor/${mentid}`, {
+		const response = await fetch(url + `/api/admin/verify/mentor/${mentid}`, {
 			method: "PUT",
 			headers: { "Content-Type": "application/json" },
 		});
@@ -74,7 +77,7 @@ const Card = ({ mentid }) => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		const response = await fetch(`http://localhost:6100/api/admin/reject/mentor/${mentid}`, {
+		const response = await fetch(url + `/api/admin/reject/mentor/${mentid}`, {
 			method: "PUT",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({ reason: reason }),

@@ -22,9 +22,12 @@ const AcceptCard = ({ mentid }) => {
 		setIsOpen(false);
 	};
 
+	let url = ""
+	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100")
+
 	useEffect(() => {
 		const getdata = async () => {
-			const response = await fetch(`http://localhost:6100/api/admin/mentor/dets/${mentid}`, {
+			const response = await fetch(url + `/api/admin/mentor/dets/${mentid}`, {
 				method: "GET",
 				headers: { "Content-Type": "application/json" },
 			});
@@ -49,7 +52,7 @@ const AcceptCard = ({ mentid }) => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		const response = await fetch(`http://localhost:6100/api/admin/reject/mentor/${mentid}`, {
+		const response = await fetch( url + `/api/admin/reject/mentor/${mentid}`, {
 			method: "PUT",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({ reason: reason }),

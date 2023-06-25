@@ -25,8 +25,11 @@ const PostViewMentor = () => {
 	const [searchError, setSearchError] = useState(null);
 	const [gohash, setgohash] = useState("");
 
+	let url = ""
+	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100")
+
 	const getalldoubts = async () => {
-		const response = await fetch(`/api/post/getallpost/mentor`, {
+		const response = await fetch(url + `/api/post/getallpost/mentor`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",

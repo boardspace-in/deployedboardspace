@@ -23,7 +23,9 @@ const MentorChat = (props) => {
 	const role = decoded.role;
 	const userId = decoded.id;
 
-	
+	let url = ""
+	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100")
+
 	const hello = (e) => {
 		e.preventDefault();
 		setgohash(e.target.value);
@@ -31,7 +33,7 @@ const MentorChat = (props) => {
 	const srch = async (e) => {
 		e.preventDefault();
 		try {
-			const response = await fetch(`/api/post/isValid/${gohash}`, {
+			const response = await fetch(url + `/api/post/isValid/${gohash}`, {
 				method: "GET",
 				headers: {
 					"Content-Type": "application/json",
@@ -111,7 +113,7 @@ const MentorChat = (props) => {
 
 	useEffect(() => {
 		async function getdetails() {
-			const response = await fetch("/api/chat/details", {
+			const response = await fetch(url + "/api/chat/details", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",

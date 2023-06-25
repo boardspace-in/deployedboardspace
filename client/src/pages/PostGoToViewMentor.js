@@ -24,6 +24,9 @@ const PostGoToViewMentor = () => {
 	const [gohash, setgohash] = useState("");
 	const [fetchedComments, setFetchedComments] = useState(false);
 
+	let url = ""
+	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100")
+
 	const commentsRef = useRef(null);
 
 	useEffect(() => {
@@ -32,7 +35,7 @@ const PostGoToViewMentor = () => {
 
 	useEffect(() => {
 		async function getpost() {
-			const response = await fetch(`/api/post/getpost/${findhashtag}`, {
+			const response = await fetch(url + `/api/post/getpost/${findhashtag}`, {
 				method: "GET",
 				headers: {
 					"Content-Type": "application/json",
@@ -55,39 +58,39 @@ const PostGoToViewMentor = () => {
 		getpost();
 	}, []);
 
-	useEffect(() => {
-		async function getcomments() {
-			const response = await fetch(`/api/comment/getall/${postdet.pid}`, {
-				method: "GET",
-				headers: {
-					"Content-Type": "application/json",
-				},
-			});
+	const getcomments = async() => {
+		const response = await fetch(url + `/api/comment/getall/${postdet.pid}`, {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
 
-			const json = await response.json();
+		const json = await response.json();
 
-			if (json.error) {
-				seterror(json.error);
-			}
-
-			if (json.success) {
-				setcomments(json.data);
-				console.log(comments);
-			}
+		if (json.error) {
+			seterror(json.error);
 		}
 
+		if (json.success) {
+			setcomments(json.data);
+		}
+	}
+
+	useEffect(() => {
+		
 		if (postdet.pid && !fetchedComments) {
 			getcomments();
 			setFetchedComments(true);
 		}
-
+	
 		setArr(comments);
 	});
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		const response = await fetch(`/api/comment/create/mentor/${postdet.pid}`, {
+		const response = await fetch(url + `/api/comment/create/mentor/${postdet.pid}`, {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({ ownerid: userId, cont: newcomm }),
@@ -101,10 +104,10 @@ const PostGoToViewMentor = () => {
 				seterror(null);
 			}, 4000);
 		}
-
+	
 		if (json.success) {
 			setnewcomm("");
-			navigate(0);
+			await getcomments()
 		}
 	};
 
@@ -123,7 +126,7 @@ const PostGoToViewMentor = () => {
 	const srch = async (e) => {
 		e.preventDefault();
 		try {
-			const response = await fetch(`/api/post/isValid/${gohash}`, {
+			const response = await fetch(url + `/api/post/isValid/${gohash}`, {
 				method: "GET",
 				headers: {
 					"Content-Type": "application/json",

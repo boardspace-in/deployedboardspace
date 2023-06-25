@@ -10,13 +10,16 @@ const AdminLogin = () => {
 
 	let navigate = useNavigate();
 
+	let url = ""
+	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100")
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
 		// show loading sign
 		setIsLoading(true);
 
-		const response = await fetch("/api/admin/login", {
+		const response = await fetch(url + "/api/admin/login", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({ email: creadentials.email, password: creadentials.password }),

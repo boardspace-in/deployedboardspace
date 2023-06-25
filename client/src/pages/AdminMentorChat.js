@@ -22,6 +22,9 @@ const AdminMentorChat = (props) => {
   const [messages, setMessages] = useState([])
   const [name, setname] = useState("")
 
+  let url = ""
+	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100")
+
   const [notifs, setnotifs] = useState([{id : "", count : "", mname:""}])
 
   var decoded = jwt_decode(localStorage.getItem("Token"))
@@ -47,7 +50,7 @@ const AdminMentorChat = (props) => {
 
   async function getname() {
 
-    const response = await fetch(`/api/admin/mentor/dets/${id}`, {
+    const response = await fetch(url + `/api/admin/mentor/dets/${id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
@@ -70,7 +73,7 @@ const AdminMentorChat = (props) => {
 
   async function getname2(givenid){
 
-    const response = await fetch(`/api/admin/mentor/dets/${givenid}`, {
+    const response = await fetch(url + `/api/admin/mentor/dets/${givenid}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
@@ -84,7 +87,7 @@ const AdminMentorChat = (props) => {
 
   async function getmentornotf() {
 
-    const response = await fetch("/api/chat/mentor/notif", {
+    const response = await fetch(url + "/api/chat/mentor/notif", {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'

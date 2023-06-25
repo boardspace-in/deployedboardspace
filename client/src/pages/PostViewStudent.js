@@ -25,8 +25,11 @@ const PostViewStudent = () => {
 	const [searchError, setSearchError] = useState(null);
 	const [gohash, setgohash] = useState("");
 
+	let url = ""
+	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100")
+
 	const getalldoubts = async () => {
-		const response = await fetch(`/api/post/getallpost/student/${userId}`, {
+		const response = await fetch(url + `/api/post/getallpost/student/${userId}`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
@@ -66,7 +69,7 @@ const PostViewStudent = () => {
 	const srch = async (e) => {
 		e.preventDefault();
 		try {
-			const response = await fetch(`/api/post/isValid/${gohash}`, {
+			const response = await fetch(url + `/api/post/isValid/${gohash}`, {
 				method: "GET",
 				headers: {
 					"Content-Type": "application/json",

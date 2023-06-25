@@ -13,10 +13,13 @@ const Students = ({id, notifications}) => {
   const [error, setError] = useState(null)
   const [creadentials, setCredentials] = useState({ email: "", mname: ""})
 
+  let url = ""
+	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100")
+
   useEffect(() => {
     const getdata = async() =>{
 
-      const response = await fetch(`http://localhost:6100/api/student/dets/${id}`, {
+      const response = await fetch(url + `/api/student/dets/${id}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       })

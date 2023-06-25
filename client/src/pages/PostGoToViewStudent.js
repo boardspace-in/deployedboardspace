@@ -25,9 +25,12 @@ const PostGoToViewStudent = () => {
 	const [searchError, setSearchError] = useState(null);
 	const [gohash, setgohash] = useState("");
 
+	let url = ""
+	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100")
+
 	useEffect(() => {
 		async function getpost() {
-			const response = await fetch(`/api/post/getpost/${findhashtag}`, {
+			const response = await fetch(url + `/api/post/getpost/${findhashtag}`, {
 				method: "GET",
 				headers: {
 					"Content-Type": "application/json",
@@ -56,32 +59,32 @@ const PostGoToViewStudent = () => {
 		commentsRef.current.scrollTo(0, commentsRef.current.scrollHeight);
 	}, [arr]);
 
-	useEffect(() => {
-		async function getcomments() {
-			const response = await fetch(`/api/comment/getall/${postdet.pid}`, {
-				method: "GET",
-				headers: {
-					"Content-Type": "application/json",
-				},
-			});
+	const getcomments = async() => {
+		const response = await fetch(url + `/api/comment/getall/${postdet.pid}`, {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
 
-			const json = await response.json();
+		const json = await response.json();
 
-			if (json.error) {
-				seterror(json.error);
-			}
-
-			if (json.success) {
-				setcomments(json.data);
-				console.log(json.data);
-			}
+		if (json.error) {
+			seterror(json.error);
 		}
 
+		if (json.success) {
+			setcomments(json.data);
+		}
+	}
+
+	useEffect(() => {
+		
 		if (postdet.pid && !fetchedComments) {
 			getcomments();
 			setFetchedComments(true);
 		}
-
+	
 		setArr(comments);
 	});
 
@@ -89,7 +92,7 @@ const PostGoToViewStudent = () => {
 		var checkbox = document.getElementById("toggle");
 		setChecked(!checked);
 		//kd loader daal idr
-		const response = await fetch(`/api/post/changsolv/${findhashtag}`, {
+		const response = await fetch(url + `/api/post/changsolv/${findhashtag}`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
@@ -106,8 +109,9 @@ const PostGoToViewStudent = () => {
 	};
 
 	const handleSubmit = async (e) => {
-		e.preventDefault();
-		const response = await fetch(`/api/comment/create/student/${postdet.pid}`, {
+		e.preventDefault()
+
+		const response = await fetch(url + `/api/comment/create/student/${postdet.pid}`, {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({ cont: newcomm }),
@@ -124,8 +128,9 @@ const PostGoToViewStudent = () => {
 
 		if (json.success) {
 			setnewcomm("");
-			navigate(0);
+			await getcomments()
 		}
+
 	};
 
 	const handleinput = (e) => {
@@ -143,7 +148,7 @@ const PostGoToViewStudent = () => {
 	const srch = async (e) => {
 		e.preventDefault();
 		try {
-			const response = await fetch(`/api/post/isValid/${gohash}`, {
+			const response = await fetch(url + `/api/post/isValid/${gohash}`, {
 				method: "GET",
 				headers: {
 					"Content-Type": "application/json",

@@ -9,6 +9,9 @@ const StudentSignup = () => {
 	const [error, setError] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
 
+	let url = ""
+	process.env.NODE_ENV === "production" ? (url = "") : (url = "http://localhost:6100")
+
 	let navigate = useNavigate();
 
 	const handleSubmit = async (e) => {
@@ -17,7 +20,7 @@ const StudentSignup = () => {
 		// show loading sign
 		setIsLoading(true);
 
-		const response = await fetch("/api/student/signup", {
+		const response = await fetch(url + "/api/student/signup", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({ email: credentials.email, name: credentials.name, phonenum: credentials.phonenum, password: credentials.password }),
